@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@f_!==4h$aasvhkt5*1y$%4y0r13m8)c0rr1oi7f9hz#cavaok
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "utandra-nur-sspshop.pbp.cs.ui.ac.id"]
 
 
 # Application definition
