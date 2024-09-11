@@ -12,7 +12,7 @@
 11. Buat readme.md
 
 - Bagan Client  
-![Bagan Client](https://www.figma.com/board/SLEDTraRPVR9l8XAqtwOvP/Untitled?node-id=0-1&t=DwSLEpLZNAcZW4oV-1)
+![Bagan Client](https://drive.google.com/file/d/1xPmsC1JxE5CGiZgdL6ru9CsByWVBobBs/view)
 
 
 - fungsi git dalam pengembangan perangkat lunak  
