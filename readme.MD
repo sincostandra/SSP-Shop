@@ -1,3 +1,6 @@
+Deployment :
+http://utandra-nur-sspshop.pbp.cs.ui.ac.id/
+
 - Cara mengimplementasikan checklist secara step-by-step
 1. Buat sebuah direktori baru dan lakukan git init agar direktorinya menjadi git lokal
 2. Buat dan aktifkan environment yang berguna untuk mengisolasi package serta dependencies dari aplikasi agar tidak bertabrakan dengan versi lain yang ada pada komputer (lokal)
