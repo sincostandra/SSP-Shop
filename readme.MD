@@ -12,7 +12,7 @@
 11. Buat readme.md
 
 - Bagan Client  
-![Bagan Client](https://drive.google.com/file/d/1xPmsC1JxE5CGiZgdL6ru9CsByWVBobBs/view)
+[Bagan Client](https://drive.google.com/file/d/1xPmsC1JxE5CGiZgdL6ru9CsByWVBobBs/view)
 
 
 - fungsi git dalam pengembangan perangkat lunak  
