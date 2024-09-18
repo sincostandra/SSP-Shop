@@ -73,7 +73,7 @@ G. Buat file create_product.html sebagai tampilan ketika user sedang add product
 
 
 
-POSTMAN
+POSTMAN  
 XML
 ![e11f556b-3ea5-40e5-8d17-80ffb414dd6e](https://github.com/user-attachments/assets/87fef678-ce48-4346-87eb-5e0764fff3c1)
 
