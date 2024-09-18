@@ -18,7 +18,7 @@ TUGAS 1
 11. Buat readme.md
 
 - Bagan Client  
-[Bagan Client](https://drive.google.com/file/d/1xPmsC1JxE5CGiZgdL6ru9CsByWVBobBs/view)
+![bagan](https://github.com/user-attachments/assets/54eccdf7-cc4d-4e54-bae7-339a34810116)
 
 
 - fungsi git dalam pengembangan perangkat lunak  
@@ -74,8 +74,14 @@ G. Buat file create_product.html sebagai tampilan ketika user sedang add product
 
 
 POSTMAN
-
+XML
 ![e11f556b-3ea5-40e5-8d17-80ffb414dd6e](https://github.com/user-attachments/assets/87fef678-ce48-4346-87eb-5e0764fff3c1)
+
+JSON
 ![3a6408b6-2f8e-4ffb-8fa6-8ba0cede9ddc](https://github.com/user-attachments/assets/2a4fa79d-cd71-4102-bdf7-6debf8e8f355)
+
+XML by id
 ![ee7cda68-a743-4178-947f-265970c7e26e](https://github.com/user-attachments/assets/17092805-ef66-4bd9-925c-58547a432361)
+
+JSON by id
 ![ea02c635-c113-4205-a99d-04741cad2ad2](https://github.com/user-attachments/assets/abb99262-bcd9-4706-9ed1-a358d40b22ae)
