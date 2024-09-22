@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Register</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class="login">
+  <h1>Register</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+      <tr>
+        <td></td>
+        <td><input type="submit" name="submit" value="Register" /></td>
+      </tr>
+    </table>
+  </form>
+
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: flex-start;
+  }
+
+  table tr td {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  table tr td label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  table tr td input,
+  table tr td select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* Remove label from the last row (submit button) */
+  table tr:last-child td label {
+    display: none;
+  }
+  
+  .helptext {
+    font-size: 12px;
+    color: grey;
+  }
+
+</style>
+
+{% endblock content %}

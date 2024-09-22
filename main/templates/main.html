@@ -9,6 +9,13 @@
     Add New SSP
 </a>
 
+<a href="{% url 'main:logout' %}">
+    <button>Logout</button>
+</a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
+
 {% if not products %}
     <p>Belum ada SSP yang tersedia.</p>
 {% else %}
