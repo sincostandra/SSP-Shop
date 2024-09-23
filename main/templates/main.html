@@ -9,12 +9,11 @@
     Add New SSP
 </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>Logout</button>
+<a href="{% url 'main:logout' %}" class ="logout-button">
+    Logout
 </a>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
-
 
 {% if not products %}
     <p>Belum ada SSP yang tersedia.</p>
@@ -56,6 +55,20 @@ Kode di bawah hanya untuk mempercantik tampilan
 
     .add-product-button:hover {
         background-color: #218838;
+    }
+
+    .logout-button {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        background-color: #f91404;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .logout-button:hover {
+        background-color: #cb0d0d;
     }
 
     .product-carousel-container {
