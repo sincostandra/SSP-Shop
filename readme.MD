@@ -1,8 +1,81 @@
 # Deployment : 
 http://utandra-nur-sspshop.pbp.cs.ui.ac.id/
 
+## TUGAS 4
+### Pertanyaan
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!  
+    Urutan prioritas pengambilan CSS selector mengikuti specificity. Urutannya dari yang terendah hingga tertinggi:
 
+    1. Elemen HTML (Type selectors)  
+    2. Class selectors  
+    3. ID selectors  
+    4. Inline styles  
+    5. !important.  
 
+    Semakin spesifik selektor, semakin tinggi prioritasnya. Jika ada dua atau lebih selector yang memiliki tingkat specificity yang sama, aturan yang berada paling bawah dalam file CSS akan diambil.
+
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!  
+Responsive design memungkinkan sebuah aplikasi web untuk menyesuaikan tampilannya di berbagai perangkat dengan ukuran layar yang berbeda, seperti desktop, tablet, dan smartphone. Ini penting karena pengguna/client web kita diisi oleh mayoritas pengguna smartphone (sekitar 90%) (sumber: https://www.statista.com/statistics/1289755/internet-access-by-device-worldwide/) sehingga web kita menjadi lebih mudah diakses oleh mayoritas pengguna internet  
+Contoh web/aplikasi yang responsive: x.com  
+Contoh web/aplikasi yang belum responsive: pertamina.com  
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!  
+Margin: Ruang di luar border elemen. sebagai pengatur jarak antara elemen dan elemen lain di sekitarnya.
+Border: Garis di sekeliling elemen yang memisahkan padding dan margin. Kita dapat mengubah ketebalan, warna, dan jenisnya.
+Padding: Ruang antara konten elemen dan border-nya. Padding memperbesar area dalam elemen tanpa menambah ukuran luar.
+
+Implementasi margin, border, dan padding
+```css
+  div {
+  margin: 20px; /* Jarak 20px dari elemen lain */
+  border: 2px solid black; /* Border hitam 2px */
+  padding: 15px; /* Jarak konten ke border sebesar 15px */
+}
+```
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!  
+Flexbox: Layout yang lebih fleksibel untuk mengatur elemen dalam satu dimensi, baik secara horizontal atau vertikal. Kegunaannya adalah untuk memudahkan distribusi elemen dalam satu baris atau kolom dengan kontrol yang lebih baik untuk alignment dan space distribution.  
+Grid Layout: Layout yang bekerja dalam dua dimensi, yaitu baris dan kolom.  Cocok unntuk membuat tata letak yang kompleks dengan area yang dapat dibagi-bagi secara rapi.
+
+### Implementasi Step-by-step
+- Static files django  
+    Pada settings.py, kita perlu menambahkan STATIC_ROOT yang menentukan absolute path ke direktori static files ketika menjalankan perintah collectstatic pada proyek. STATIC_ROOT ini nantinya berguna untuk melakukan menyediakan path konten statis pada akses production (DEBUG=False pada settings.py).  
+    Tambahkan middleware WhiteNoise sehingga Django dapat mengelola file statis secara otomatis dalam mode produksi (DEBUG=False) tanpa perlu konfigurasi yang kompleks.
+
+- Menambahkan tailwind ke aplikasi  
+    Pada base html, tambahkan tag <meta name="viewport"> agar halamanw eb menjadi responsive, setelah itu sambungkan template django dengan tailwind dengan memanfaatkan script CDN dari tailwind  
+
+- Fitur Edit Product  
+    Pada views.py Buat sebuah method yang mengambil objects product dengan id yang spesifik (pk = id), kemudian buat formnya menggunakan MoodEntryForm (dengan instance product yang kita definisikan tadi) dan cek apakah formnya valid. Jika valid, simpan input dan kembali ke show_main.   
+    Buat berkas HTML pada main/templates sebagai tampilan ketika sedang mengedit product, tambahkan juga button untuk mengedit produk di main.html  
+    Aur kembali juga urls.py agar urlnya dapat diakses oleh client
+
+- Fitur Delete Product  
+    Pada views.py Buat sebuah method yang mengambil objects product dengan id yang spesifik (pk = id), setelah itu panggil method delete (bawaan django), return page ke main page.   
+    Tambahkan Button pada main.html dan lakukan routing pada urls.py  
+
+- Navigation Bar  
+    Buat berkas html dengan nama navbar.html di root /templates. Lakukan styling pada navbar dengan tailwind. Kemudian, tautkan navbar tersebut ke dalam main.html, create_mood_entry.html, dan edit_mood.html yang berada di subdirektori main/templates/ dengan menggunakan tags include
+
+- Global css  
+    Buat sebuah file global.css di /static/ss pada root dir, file ini berguna sebagai template style yang bisa kita gunakan kedepannya.  
+    Untuk menambahkan template ini ke file yg lain, gunakan sintaks {% load static %}  
+
+- Styling page login dan register
+    Lakukan styling pada masing-masing page sesuai ide awal
+
+- Styling create_product dan edit_product  
+    Lakukan styling pada masing-masing page dan Lakukan extend/load base.html dan static css
+
+- Styling Halaman Home  
+    Buat sebuah berkas bernama card_info.html pada main/templates, berkas ini sebagai tampilan untuk info spt nama, kelas, dan shop_name
+
+    Buat berkas card_product.html, berkas ini sebagai tampilan untuk masing-masing product.  
+
+    Buat berkas gambar sebagai tampilan ketika produk belum ada, simpan berkas ini di static/image
+
+    Pada main.html, masukkan semua berkas tadi sesuai styling yang dibuat.  
+
+    
 ## TUGAS 3
 ### Pertanyaan
 1. Perbedaan antara HttpResponseRedirect() dan redirect()  
