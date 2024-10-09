@@ -1,8 +1,66 @@
 # Deployment : 
 http://utandra-nur-sspshop.pbp.cs.ui.ac.id/
 
+## Tugas 5
+<details>
+Pertanyaan  
+
+1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!  
+JavaScript memungkinkan elemen-elemen pada halaman web untuk merespons aksi pengguna (seperti klik, input, atau scroll) tanpa perlu memuat ulang halaman (Event Driven dan Asinkronus), selain itu Dengan AJAX, JavaScript memungkinkan pengambilan dan pengiriman data dari server tanpa perlu memuat ulang seluruh halaman, sehingga meningkatkan efisiensi dan kecepatan.
+
+2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?  
+await digunakan untuk menunggu hasil dari operasi asynchronous (seperti fetch()). Ketika menggunakan await, kode berikutnya tidak akan dieksekusi sampai promise yang dihasilkan oleh fetch() diselesaikan (resolved atau rejected). Jika tidak mengguanakan await saat memanggil fetch, maka kode setelah fetch akan tetap jalan dan berpotensi mengalami error karena fetchnya belum selesai.
+
+3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?  
+Decorator csrf_exempt membuat Django tidak perlu mengecek keberadaan csrf_token pada POST request yang dikirimkan ke view/fungsi. Kita perlu mematikan csrfnya karena AJAX tidak secara otomatis menyertakan token CSRF (Tidak seperti formulir HTML tradisional yang secara otomatis menyertakan token CSRF).
+Namun, penggunaannya harus hati-hati karena dapat membuat view rentan terhadap serangan CSRF.
+
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?   
+Melakukan pembersihan data hanya di frontend tidak cukup karena kode JavaScript di sisi klien bisa dimanipulasi oleh pengguna atau peretas, sehingga tidak bisa dianggap sepenuhnya aman. Oleh karena itu, sangat penting melakukan pembersihan di backend untuk memastikan bahwa data yang masuk ke sistem adalah valid, terlepas dari apakah pengguna telah melakukan bypass terhadap validasi input di frontend atau tidak.  
+
+
+Implementasi  
+
+
+1. AJAX GET
+Lakukan import csrf_exempt dan require_POST dari django.views.decorators, Decorator csrf_exempt akan membuat django tidak cek keberadaan csrf_token karena biasanya ajax tidak generate token itu. Decorator require_POST membuat fungsinya hanya bisa diakses ketika pengguna mengirimkan POST request ke fungsi tsb. Jadi formnya tidak bisa diakses user lain
+
+Di file views.py buat sebuah fungsi yang menerima parameter request dengan nama create_product_ajax. Untuk setiap field lakukan request.POST.get dan return HttpRespone(b"CREATE", status = 201).  
+
+Lakukan routing di urls.py  
+
+Langkah selanjutya menghapus variabel yang menerima products dari user dan memindahkannya ke show_json, karena dari sekarang, pengambilan objek-objek product diambil dari endpoint /json  
+
+Hapus juga script html untuk menampilkan card productnya dan ganti dengan sebuah tag baru dengan id product_cards  
+
+Buat blok script js baru di main.html, isi script tsb dengan async function yang akan mengambil (parse) data produk dari json, tambahkan juga async function baru di script dengan nama refreshProducts, fungsi ini akan me-refresh data products secara asinkronus (pastikan fungsi ini mengimplementasikan await)
+
+2. AJAX POST
+Tambahkan script untuk membuat Modal di main.html di bawah div dengan id product_cards, tambahkan juga function untuk membuat class modal karena dari vanilla tailwind css tidak menyediakan built-in modal  
+
+Tambahkan button untuk menambahkan data via ajax, buat fungsi di script js dengan nama addProduct, function ini akan menyimpan data ke json dan akan close modal ketika inputnya berhasil  
+
+Tambahkan juga event listener untuk masing-masing button pada modal  
+
+3. XSS  
+Tambahkan strip tags setiap pada function create_product_ajax di views.py, strip tags ini akan digunakan untuk setiap fields nonnumerik agar menghindari XSS dari peretas tambahkan juga function clean di masing-masing field pada file forms.py. Bersihkan data dengan DOMPurify untuk melakukan pembersihan di frontend  
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
 ## TUGAS 4
-### Pertanyaan
+<details>
+Pertanyaan  
+
 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!  
     Urutan prioritas pengambilan CSS selector mengikuti specificity. Urutannya dari yang terendah hingga tertinggi:
 
@@ -74,9 +132,10 @@ Grid Layout: Layout yang bekerja dalam dua dimensi, yaitu baris dan kolom.  Coco
     Buat berkas gambar sebagai tampilan ketika produk belum ada, simpan berkas ini di static/image
 
     Pada main.html, masukkan semua berkas tadi sesuai styling yang dibuat.  
-
+</details>
     
 ## TUGAS 3
+<details>
 ### Pertanyaan
 1. Perbedaan antara HttpResponseRedirect() dan redirect()  
 Secara singkat, redirect() merupakan shortcut untuk langsung mengarahkan user atau client ke URL yang sesuai, sedangkan HttpResponeRedirect() merupakan versi yang lebih kompleks dari redirect() karena memberikan kontrol leih untuk melakukan modifikasi sebelum return (misal, kita bisa menggunakan method set_cookies)
@@ -131,10 +190,10 @@ Kegunaan lain dari cookies adalah untuk menyimpan data yang tidak sensitif, sepe
 
 - Menghubungkan Product dengan User  
 pada models.py, lakukan import User dari django.contrib.auth.models, dan pada class Product buat sebuah attribut baru yg bernama user. attribut ini diisi dengan field ForeignKey (ini akan memastikan bahwa Product hanya akan terasosiasikan dengan seorang User). Setelah itu, pada method create_product, kita simpan user yang mengisi form create_product (request.user) pada variabael product.user. Kemudian pada method show main, modifikasi kode sehingga products hanya menerima Product sesuai usernya dengan cara Product.objects.filter(user=request.user). Kemudian ubah value context khususnya di key 'name', menjadi request.user.username agar username dapat ditampilkan di show_main
-
+</details>
 
 ## TUGAS 2
-
+<details>
 ### Pertanyaan
 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?  
 Dalam membuat suatu platform, tentunya kita pasti akan mengirimkan data dari sebuah tech stack ke tech stack yang lain. Proses pengiriman data ini yang kita kenal sebagai data delivery. Proses ini sangat krusial karena memungkinkan komponen-komponen yang menggunakan tech stack yang berbeda dapat saling berinteraksi dan bertukar informasi. Dengan adanya data delivery, setiap komponen dalam platform dapat menjalankan fungsinya secara optimal. Misalnya, data produk yang tersimpan di database dapat dikirimkan ke frontend untuk ditampilkan pada halaman produk, atau data produk yang diinputkan oleh pengguna di frontend dapat dikirimkan ke backend untuk diproses lebih lanjut.
@@ -179,11 +238,11 @@ XML by id
 
 JSON by id
 ![ea02c635-c113-4205-a99d-04741cad2ad2](https://github.com/user-attachments/assets/abb99262-bcd9-4706-9ed1-a358d40b22ae)
-
+</details>
 
 ## TUGAS 1
 
-
+<details>
 ### Pertanyaan
 1. Fungsi git dalam pengembangan perangkat lunak  
 Git adalah tools version control, yang memungkinkan developer untuk melacak perubahan kode dari waktu ke waktu (version kontrol), berkolaborasi sesama developer (kolaborasi), membuat/mengetes fitur baru tanpa memengaruhi fitur utama (branching), dan dengan platform git online (misal, GitHub) bisa dimanfaatkan sebagai backup kode
@@ -213,3 +272,5 @@ Maka dari itu Django disebut ORM (Object-Relational Mapping) karena Django mengg
 
 ### Bagan Client  
 ![bagan](https://github.com/user-attachments/assets/54eccdf7-cc4d-4e54-bae7-339a34810116)
+
+</details>

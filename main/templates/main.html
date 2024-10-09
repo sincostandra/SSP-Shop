@@ -209,6 +209,7 @@
   })
   .then(response => {
     if (response.ok) {
+      hideModal();
       refreshProducts();
       document.getElementById("ProductForm").reset();
       document.querySelector("[data-modal-toggle='crudModal']").click(); // Close modal if success
