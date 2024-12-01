@@ -35,7 +35,10 @@ DEBUG = not PRODUCTION
 # DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "utandra-nur-sspshop.pbp.cs.ui.ac.id", "10.0.2.2"]
-
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "utandra-nur-sspshop.pbp.cs.ui.ac.id"
+]
 
 # Application definition
 
